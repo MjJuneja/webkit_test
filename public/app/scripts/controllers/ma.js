@@ -2,17 +2,16 @@
 
 /**
  * @ngdoc function
- * @name publicApp.controller:AboutCtrl
+ * @name publicApp.controller:MaCtrl
  * @description
- * # AboutCtrl
+ * # MaCtrl
  * Controller of the publicApp
  */
 angular.module('publicApp')
-  .controller('AboutCtrl', function ($scope,$http,$window) {
+  .controller('MaCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-    
   });

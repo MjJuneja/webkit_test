@@ -15,32 +15,48 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngCookies'
   ])
+  
+
+
+
   .config(function ($routeProvider,$locationProvider) {
+  //  $urlRouterProvider.deferIntercept();
     $locationProvider.hashPrefix('');
       $routeProvider.when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profile'
       })
        .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
-      
-      .when('/profile', {
-        templateUrl: 'views/profile.html',
-        controller: 'ProfileCtrl',
-        controllerAs: 'profile'
+       .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl',
+        controllerAs: 'signup'
+      })
+      .when('/logout', {
+        templateUrl: 'views/main.html',
+        controller: 'LogoutCtrl',
+        controllerAs: 'logout'
       })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+//  .run(function($urlRouter, myservice) {
+//   myservice.promise.then(function() {
+//     $urlRouter.listen();
+//     $urlRouter.sync();  // not sure if this is necessary
+//   });
+// });

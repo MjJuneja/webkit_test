@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 const db = require("../db/db");
+var crud = require("../db/crud");
 /* GET home page. */
 router.get('/', function(req, res, next) {
   
@@ -11,29 +12,33 @@ router.get('/', function(req, res, next) {
 router.post('/log',function(req,res){
   
     var data = req.body;
-    console.log(db.length);
-    for(var i= 0 ; i<db.length;i++){
-       if(data.userid == db[i].userid && data.password == db[i].password){
-      res.send("welcome");
-      console.log("hey");
-      req.session.user = db[i];
-      
-      break;
-    }
-    else{
-      res.send("user not found");
-    }
-    }
-   
+    // console.log(data);
+      crud.findProduct(data,req,res);
+});
+router.post('/signup',function(req,res){
+  
+    var data = req.body;
+    console.log(data);
+      crud.register(data,res);
 });
 router.get("/session",function(req,res){
   
-  if(req.session.user!=null){
-    res.send("welcome");
+  if(req.session.userid!=null){
+    res.send(req.session);
   }
   else{
     res.send("invalid user");
   }
 });
+
+router.get("/logout",function(req,res){
+  if(req.session.userid!=null){
+    req.session.userid=null;
+    res.send("logged out");
+  }
+  else{
+    res.send("invalid user");
+  }
+})
 
 module.exports = router;

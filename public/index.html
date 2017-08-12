@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html >
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -13,13 +13,14 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/fakeLoader.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="publicApp">
+  <body ng-app="publicApp" ng-controller="indexCtrl">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+<div class="fakeloader"></div>
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
@@ -42,18 +43,19 @@
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
-               <li><a ng-href="#/login">Login</a></li>
-              <li><a ng-href="#/signup">Signup</a></li>
-               <li><a ng-href="#/logout">Logout</a></li>
-              <li><a ng-href="#/profile">Profile</a></li>
+               <li><a ng-href="#/login" ng-hide="main.logged">Login</a></li>
+              <li><a ng-href="#/signup" ng-hide="main.logged">Signup</a></li>
+               <li><a ng-href="#/logout" ng-hide="main.logoutHide">Logout</a></li>
+              <li><a ng-href="#/profile" ng-hide="main.profileHide">Profile</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
+    <div class="container" ng-cloak>
+      <page-loader></page-loader>
+    <div ng-view="" ng-cloak></div>
     </div>
 
     <div class="footer">
@@ -62,7 +64,7 @@
       </div>
     </div>
 
-
+    
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -73,7 +75,7 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
-
+    
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -87,13 +89,46 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="scripts/libs/fakeLoader.min.js"></script>
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+<!--<script>
+            // $(document).ready(function(){
+                $(".fakeloader").fakeLoader({
+                
+                    // timeToHide:1200,
+                    bgColor:"#2ecc71",
+                    spinner:"spinner1"
+                });
+                
+            // });
+        </script>-->
+<!--<script>
+
+$(".fakeloader").fakeLoader({
+timeToHide:1200, //Time in milliseconds for fakeLoader disappear
+zIndex:"9999",//Default zIndex
+// spinner:"spinner6",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+bgColor:"#fff", //Hex, RGB or RGBA colors
+imagePath:"images/preloader.gif" //If you want can you insert your custom image
+});
+</script>-->
+
+<!--<script src="scripts/libs/fakeLoader.js"></script>-->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js  -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/services/common.js"></script>
+        <script src="index.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/logout.js"></script>
         <script src="scripts/services/login.js"></script>
         <!-- endbuild -->
+        
+
 </body>
 </html>

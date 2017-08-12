@@ -40,6 +40,11 @@ angular
         controller: 'ProfileCtrl',
         controllerAs: 'profile'
       })
+      .when('/ma', {
+        templateUrl: 'views/ma.html',
+        controller: 'MaCtrl',
+        controllerAs: 'ma'
+      })
       .otherwise({
         redirectTo: '/'
       });

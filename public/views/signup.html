@@ -1,13 +1,13 @@
-<h3>Login Form</h3>
+<h3>Register Form</h3>
 
 <form  name="login" ng-submit="submit(login.$valid)" novalidate="novalidate">
  
-<input type="text" name="uid" placeholder="userid" ng-model="login.userid" required>
+<input type="text" name="uid" placeholder="userid" ng-model="register.userid" required>
 
 <span ng-show="login.uid.$touched && login.uid.$error.required">Enter Correct userid</span> <br>
-<input type="password" name="pwd" placeholder="password" ng-model="login.password" pattern="[a-z]{2,5}">
+<input type="password" name="pwd" placeholder="password" ng-model="register.password" pattern="[a-z]{2,5}">
 <span ng-show="login.pwd.$touched && login.pwd.$error.pattern">Invalid password (2-5 characters and 2 numbers)</span>
 <br>
-<button type="submit">Login</button>
+<button type="submit">Sign Up</button>
 
 </form>

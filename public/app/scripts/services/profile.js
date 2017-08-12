@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name loginappApp.profile
+ * @name publicApp.profile
  * @description
  * # profile
- * Service in the loginappApp.
+ * Service in the publicApp.
  */
-angular.module('loginappApp')
+angular.module('publicApp')
   .service('profile', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
   });
